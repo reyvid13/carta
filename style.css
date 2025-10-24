@@ -1,0 +1,135 @@
+/* Fundo e estilo geral */
+body {
+  background: linear-gradient(135deg, #ffd6e0, #ffe9f3);
+  font-family: 'Poppins', sans-serif;
+  color: #5a2a55;
+  text-align: center;
+  padding: 40px;
+  overflow-x: hidden;
+}
+
+/* Caixa principal */
+.envelope {
+  background: #fff0f6;
+  border: 2px solid #f8a1c4;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(255, 182, 193, 0.5);
+  max-width: 700px;
+  margin: auto;
+}
+
+/* Botão */
+button {
+  background: #ffb6c1;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 20px;
+}
+
+button:hover {
+  background: #ff9aae;
+  transform: scale(1.05);
+}
+
+/* Mensagem oculta */
+.hidden {
+  display: none;
+  margin-top: 20px;
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* ====== GALERIA POLAROID ====== */
+.galeria-polaroid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+/* Polaroid com fio */
+.polaroid {
+  background: white;
+  padding: 10px 10px 25px 10px;
+  border-radius: 10px;
+  width: 180px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transform: rotate(-3deg);
+  transition: transform 0.4s ease;
+  opacity: 0;
+  animation: revelar 2s ease forwards;
+  position: relative;
+}
+
+/* Pequenas rotações diferentes para cada foto */
+.polaroid:nth-child(2) { transform: rotate(2deg); }
+.polaroid:nth-child(3) { transform: rotate(-1deg); }
+.polaroid:nth-child(4) { transform: rotate(3deg); }
+
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+/* Fio pendurando a foto */
+.fio {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  width: 2px;
+  height: 30px;
+  background: #ccc;
+  transform: translateX(-50%);
+}
+
+/* Efeito de balanço leve */
+.polaroid {
+  animation: revelar 1.5s ease forwards, balanco 4s ease-in-out infinite alternate;
+}
+
+@keyframes balanco {
+  0% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+  100% { transform: rotate(-2deg); }
+}
+
+/* Imagem dentro da polaroid */
+.foto-polaroid {
+  width: 100%;
+  border-radius: 5px;
+}
+
+/* Legenda da foto */
+.legenda {
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: #444;
+  margin-top: 5px;
+}
+
+/* Efeito de revelação tipo Polaroid */
+@keyframes revelar {
+  0% {
+    opacity: 0;
+    filter: brightness(3) blur(10px);
+  }
+  50% {
+    opacity: 0.5;
+    filter: brightness(2) blur(3px);
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1) blur(0);
+  }
+}
